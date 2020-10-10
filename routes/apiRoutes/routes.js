@@ -46,7 +46,6 @@ router.delete("/notes/:id", (req, res) => {
   let deleteNote = notes.findIndex((item) => item.id === req.params.id);
   //remove the note from the notes array
   notes.splice(deleteNote, 1);
-  res.sendStatus(200);
 
   //write the updated array to db.json
   fs.writeFileSync("./db/db.json", JSON.stringify(notes, null, 2), function (
