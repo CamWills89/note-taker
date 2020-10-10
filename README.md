@@ -54,7 +54,8 @@
   
   The project is open-source
 
-  ## Screenshots
+  ## Walkthrough
+  [Walkthrough Video](https://youtu.be/A4iUhRTfoT8)
   
   ## Tests:
 
