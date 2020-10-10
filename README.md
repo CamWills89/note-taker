@@ -12,6 +12,7 @@
   # Table of Contents
 
   - [Installation](#installation)
+  - [Technologies](#technologies)
   - [Usage](#usage)
   - [Credits](#credits)
   - [License](#license)
@@ -24,6 +25,12 @@
   Clone or download the repository to your machine. Initiate with ```npm i```
 
 
+## Technologies
+  - JavaScript
+  - Node js
+  - Express js
+  - Heroku
+  
   ## Usage:
 
   Use this project to write and view notes for what ever your needs require in that capacity
@@ -47,8 +54,8 @@
   
   The project is open-source
 
-
-
+  ## Screenshots
+  
   ## Tests:
 
   no testing
@@ -61,4 +68,7 @@
 
   If you have any additional questions, feel free to email them to me:
   - [Email](cameron.wills89@outlook.com)
+  
+  ## Links
+  [Heroku Link](https://cameron-note-taker.herokuapp.com/)
 
