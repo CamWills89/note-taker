@@ -5,7 +5,7 @@ const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
 
 //get notes from db.json if there are any
-let savedNotes = fs.readFileSync("./db/db.json", "UTF-8");
+const savedNotes = fs.readFileSync("./db/db.json", "UTF-8");
 if (savedNotes) {
   let oldNotes = JSON.parse(savedNotes);
   notes = oldNotes;
@@ -18,6 +18,7 @@ router.get("/notes", (req, res) => {
   return res.json(notes);
 });
 
+//collect client input data, store it and write it to the page
 router.post("/notes", function (req, res) {
   //assign a random ID
   let noteId = uuidv4();
@@ -39,50 +40,18 @@ router.post("/notes", function (req, res) {
   });
 });
 
-// function AssignUniqueId() {
-//   uuidv4();
-// }
+router.delete("/notes/:id", (req, res) => {
 
-// router.post("/notes", function(req, res) {
-
-//   let noteId = uuidv4();
-//   let newNote = {
-//     id: noteId,
-//     title: req.body.title,
-//     text: req.body.text
-//   };
-
-//   fs.readFile("./db/db.json", "utf8", (err, data) => {
-//     if (err) throw err;
-
-//     const allNotes = JSON.parse(data);
-
-//     allNotes.push(newNote);
-
-//     fs.writeFile("./db/db.json", JSON.stringify(allNotes, null, 2), err => {
-//       if (err) throw err;
-//       res.send(db);
-//       console.log("Note created!")
-//     });
-//   });
-// });
-
-// router.delete("/notes/:id", (req, res) => {
-
-//   let noteId = req.params.id;
-
-//   fs.readFile("/db/db.json", "utf8", (err, data) => {
-//     if (err) throw err;
-
-//     const allNotes = JSON.parse(data);
-//     const newAllNotes = allNotes.filter(note => note.id != noteId);
-
-//     fs.writeFile("./db/db.json", JSON.stringify(newAllNotes, null, 2), err => {
-//       if (err) throw err;
-//       res.send(db);
-//       console.log("Note deleted!")
-//     });
-//   });
-// });
+  let deleteNote = notes.findIndex(item => item.id === req.params.id);
+  notes.splice(deleteNote, 1);
+    res.sendStatus(200);
+  
+  fs.writeFileSync("./db/db.json", JSON.stringify(notes, null, 2), function (
+    err
+  ) {
+    if (err) throw err;
+  });
+  res.json({ deletion: "Note Deleted!" });
+});
 
 module.exports = router;
