@@ -19,6 +19,7 @@
   - [Contribution](#contributing)
   - [Tests](#tests)
   - [Questions](#questions)
+  - [Walkthrough](#walkthrough)
 
   ## Installation:
 
